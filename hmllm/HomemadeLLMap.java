@@ -28,10 +28,13 @@ public class HomemadeLLMap implements HomemadeMap {
      */
     public boolean containsKey(String key) {
     	
+    	//Checks to make sure that the list isn't null, then
+    	if(head == null)
+    		return false;
     	
-    	return true;
+    	return head.containsKey(key);
+    
     }
-   
 
     /**
      * Add an association to the map.
@@ -39,6 +42,12 @@ public class HomemadeLLMap implements HomemadeMap {
      * @param val The value to which this key is associated
      */
     public void put(String key, String val) {
+    	if(head == null) {
+    		head = new Node(key, val);
+    	} 
+    	else {
+    		head.put(key, val);
+    	}
     }  
 
     /**
@@ -47,7 +56,14 @@ public class HomemadeLLMap implements HomemadeMap {
      * @return The value associated with this key, null if none exists
      */
     public String get(String key) {
-    	return null;
+    	if(head == null) {
+    		return null;
+    	}
+    	if(head.getKey() == key) {
+    		return head.getValue();
+    	}
+    	return head.get(key);
+    	
     }
 
     /**
