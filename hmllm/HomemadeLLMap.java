@@ -15,6 +15,11 @@ import java.util.Iterator;
 
 public class HomemadeLLMap implements HomemadeMap {
 
+	/**
+	 * This node represents the beginning of the linked list
+	 */
+	private Node head = null;
+
 	
     /**
      * Test whether an association exists for this key.
@@ -22,6 +27,8 @@ public class HomemadeLLMap implements HomemadeMap {
      * @return true if there is an association for this key, false otherwise
      */
     public boolean containsKey(String key) {
+    	
+    	
     	return true;
     }
    
