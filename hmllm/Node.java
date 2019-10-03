@@ -50,54 +50,53 @@ public class Node {
 	
 	/**
 	 * This method recursively checks to see if the map contains a key
-	 * @param key The key to this association
 	 */
 	public boolean containsKey(String key) {
 		//Checks to see if this is the correct key
-		if(findKey(key) != null)
+		if(this.key == key)
 			return true;
 		
+		//Checks to see if there is another node after this
+		if(next != null) {
+			return next.containsKey(key);
+		}
 		return false;
 	}
 	
 	/**
-	 * This method recursively adds a key and value or rewrites a key's value
+	 * This method recursively adds a key and value or rewrites the value of a key
 	 * @param key The key to this association
      * @param val The value to which this key is associated
 	 */
 	public void put(String key, String val) {
 		//Checks to see if this is the correct key
-		if(findKey(key) != null) {
-			Node node = findKey(key);
-			node.setValue(val);
+		if(this.key == key) {
+			this.value = val;
+		}
+		else if(next != null) {
+			next.put(key, val);
 		}
 		else {
-			//Something to add next node to the end
+			next = new Node(key, val);
 		}
 	}
 	
 	/**
 	 * This method recursively finds a key to get its value
-	 * @param key The key to this association
+	 * 
 	 */
 	public String get(String key) {
-		return findKey(key).getKey();
-	}
-	
-	/**
-	 * This is a helper method to find a particular key and return its node
-	 * @param key The key to find a node for
-	 */
-	private Node findKey(String key) {
+		//Checks to see if this is the correct key
 		if(this.key == key) {
-			return this;
+			return this.value;
 		}
 		if(next != null) {
-			return next.findKey(key);
+			return next.get(key);
 		}
-		return null;
 		
+		return null;
 	}
+	
 	
 	/**
 	 * Constructor.
