@@ -79,6 +79,15 @@ public class HomemadeLLMap implements HomemadeMap {
      * @param key The key to remove
      */   
     public void remove(String key) {
+    	if(head == null || ! head.containsKey(key))
+    		return;
+    	
+    	if(head.getKey() == key) {
+    		head = head.getNext();
+    		return;
+    	}
+    	
+    	head.remove(key);
     }
 
 

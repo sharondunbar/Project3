@@ -109,6 +109,18 @@ public class Node {
 		return null;
 	}
 	
+	/** 
+	 * This method recursively checks to see if this is the right node to remove and removes if so
+	 * @param key The key it is looking for
+	 */
+	public void remove(String key) {
+		if(next.getKey() == key) {
+			next = next.getNext();
+			return;
+		}
+		next.remove(key);
+	}
+	
 	
 	/**
 	 * Constructor.
