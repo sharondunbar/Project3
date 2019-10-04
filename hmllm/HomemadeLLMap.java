@@ -60,7 +60,7 @@ public class HomemadeLLMap implements HomemadeMap {
     	
     	//Checks to see if the list is empty
     	if(head == null) {
-    		head = new Node(key, val);
+    		head = new Node(key, val, head);
     		return;
     	} 
     	
@@ -73,7 +73,7 @@ public class HomemadeLLMap implements HomemadeMap {
        		
    		}	
     	
-    	current.setNext(new Node(key, val));
+    	current.setNext(new Node(key, val, null));
     }  
 
     /**
