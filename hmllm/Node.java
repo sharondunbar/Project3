@@ -28,7 +28,6 @@ public class Node {
 	
 	/**
 	 * This method gets the value of the key
-	 * @return the key value of the node
 	 */
 	public String getKey() {
 		return key;
@@ -36,7 +35,6 @@ public class Node {
 	
 	/**
 	 * This method gets the value of the value
-	 * @return the value of the node
 	 */
 	public String getValue() {
 		return value;
@@ -51,72 +49,53 @@ public class Node {
 	}
 	
 	/**
-	 * This method gets the next node
-	 * @return the next node
+	 * This method recursively checks to see if the map contains a key
 	 */
-	public Node getNext() {
-		return next;
+	public boolean containsKey(String key) {
+		//Checks to see if this is the correct key
+		if(this.key == key)
+			return true;
+		
+		//Checks to see if there is another node after this
+		if(next != null) {
+			return next.containsKey(key);
+		}
+		return false;
 	}
 	
 	/**
-	 * This method sets the value of the next node
-	 * @param n
+	 * This method recursively adds a key and value or rewrites the value of a key
+	 * @param key The key to this association
+     * @param val The value to which this key is associated
 	 */
-	public void setNext(Node n) {
-		next = n;
+	public void put(String key, String val) {
+		//Checks to see if this is the correct key
+		if(this.key == key) {
+			this.value = val;
+		}
+		else if(next != null) {
+			next.put(key, val);
+		}
+		else {
+			next = new Node(key, val);
+		}
 	}
 	
-	
-	
-//	/**
-//	 * This method recursively checks to see if the map contains a key
-//	 */
-//	public boolean containsKey(String key) {
-//		//Checks to see if this is the correct key
-//		if(this.key == key)
-//			return true;
-//		
-//		//Checks to see if there is another node after this
-//		if(next != null) {
-//			return next.containsKey(key);
-//		}
-//		return false;
-//	}
-//	
-//	/**
-//	 * This method recursively adds a key and value or rewrites the value of a key
-//	 * @param key The key to this association
-//     * @param val The value to which this key is associated
-//	 */
-//	public void put(String key, String val) {
-//		//Checks to see if this is the correct key
-//		if(this.key == key) {
-//			this.value = val;
-//		}
-//		else if(next != null) {
-//			next.put(key, val);
-//		}
-//		else {
-//			next = new Node(key, val);
-//		}
-//	}
-//	
-//	/**
-//	 * This method recursively finds a key to get its value
-//	 * 
-//	 */
-//	public String get(String key) {
-//		//Checks to see if this is the correct key
-//		if(this.key == key) {
-//			return this.value;
-//		}
-//		if(next != null) {
-//			return next.get(key);
-//		}
-//		
-//		return null;
-//	}
-//	
+	/**
+	 * This method recursively finds a key to get its value
+	 * 
+	 */
+	public String get(String key) {
+		//Checks to see if this is the correct key
+		if(this.key == key) {
+			return this.value;
+		}
+		if(next != null) {
+			return next.get(key);
+		}
+		
+		return null;
+	}
 	
 	
 	/**
