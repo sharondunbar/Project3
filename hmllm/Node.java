@@ -44,10 +44,18 @@ public class Node {
 	
 	/**
 	 * This method sets the value of the value
-	 * @param v
+	 * @param v The value to be set
 	 */
 	public void setValue(String v) {
 		value = v;
+	}
+	
+	/**
+	 * This method gets the next node
+	 * @return 
+	 */
+	public Node getNext() {
+		return next;
 	}
 	
 	/**
