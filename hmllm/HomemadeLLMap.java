@@ -63,7 +63,6 @@ public class HomemadeLLMap implements HomemadeMap {
     		return head.getValue();
     	}
     	return head.get(key);
-    	
     }
 
     /**
