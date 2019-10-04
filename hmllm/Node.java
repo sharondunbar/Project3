@@ -28,6 +28,7 @@ public class Node {
 	
 	/**
 	 * This method gets the value of the key
+	 * @return String the key
 	 */
 	public String getKey() {
 		return key;
@@ -35,6 +36,7 @@ public class Node {
 	
 	/**
 	 * This method gets the value of the value
+	 * @return String the value
 	 */
 	public String getValue() {
 		return value;
@@ -50,6 +52,7 @@ public class Node {
 	
 	/**
 	 * This method recursively checks to see if the map contains a key
+	 * @return boolean true if the key exists
 	 */
 	public boolean containsKey(String key) {
 		//Checks to see if this is the correct key
@@ -83,7 +86,8 @@ public class Node {
 	
 	/**
 	 * This method recursively finds a key to get its value
-	 * 
+	 * @param key The key it is looking for
+	 * @return String The value associated with the key
 	 */
 	public String get(String key) {
 		//Checks to see if this is the correct key
