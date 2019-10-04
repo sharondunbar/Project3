@@ -70,7 +70,7 @@ public class HomemadeLLMap implements HomemadeMap {
      * @return An iterator over the set of keys.
      */
     public Iterator<String> keyIterator() {
-    	return null;
+    	return new MapIterator(head);
     }
 
     

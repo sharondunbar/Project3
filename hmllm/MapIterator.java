@@ -18,22 +18,24 @@ public class MapIterator implements Iterator<String> {
 	private Node current;
 	
 	/**
-	 * Returns true if there is another element in the map
+	 * Checks to see if there is another element in the map
+	 * @return true if there is another element after this one
 	 */
 	public boolean hasNext() {
 		if(current == null)
 			return false;
-		if(current.getNext() != null)
-			return true;
-		return false;
+		
+		return true;
 	}
 
 	/**
-	 * Moves to the next element in the map
+	 * Gives the next key value in the map
+	 * @return the next key
 	 */
 	public String next() {
+		String key = current.getKey();
 		current = current.getNext();
-		return current.getKey();
+		return key;
 	}
 	
 	/**

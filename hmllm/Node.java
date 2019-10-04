@@ -52,7 +52,7 @@ public class Node {
 	
 	/**
 	 * This method gets the next node
-	 * @return 
+	 * @return Node The next node
 	 */
 	public Node getNext() {
 		return next;
