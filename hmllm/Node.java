@@ -124,13 +124,10 @@ public class Node {
 	 * 
 	 * @param k key for new node
 	 * @param v value for new node
-	 * @param n value referring to the next node
 	 */
-	Node(String k, String v, Node n){
+	Node(String k, String v){
 		key = k;
 		value = v;
-		next = n;
-		
 	}
 
 }
