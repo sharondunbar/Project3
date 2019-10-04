@@ -2,6 +2,8 @@ package hmllm;
 
 import java.util.Iterator;
 
+//Modified by Sharon Dunbar
+
 /**
  * HomemadeLLMap
  * 
@@ -19,6 +21,11 @@ public class HomemadeLLMap implements HomemadeMap {
 	 * This node represents the beginning of the linked list
 	 */
 	private Node head = null;
+	
+	/**
+	 * This node moves down the list as the iterative functions work
+	 */
+	private Node current;
 
 	
     /**
@@ -27,13 +34,20 @@ public class HomemadeLLMap implements HomemadeMap {
      * @return true if there is an association for this key, false otherwise
      */
     public boolean containsKey(String key) {
+    	current = head;
     	
-    	//Checks to make sure that the list isn't null, then
+    	//Checks to make sure that the list isn't null
     	if(head == null)
     		return false;
     	
-    	return head.containsKey(key);
-    
+    	while(current.getNext() != null) {
+    		if(current.getKey() == key) {
+    			return true;
+    		}
+    		current = current.getNext();
+    	}
+    	
+    	return false;
     }
 
     /**
@@ -42,12 +56,24 @@ public class HomemadeLLMap implements HomemadeMap {
      * @param val The value to which this key is associated
      */
     public void put(String key, String val) {
+    	current = head;
+    	
+    	//Checks to see if the list is empty
     	if(head == null) {
     		head = new Node(key, val);
+    		return;
     	} 
-    	else {
-    		head.put(key, val);
-    	}
+    	
+    	while(current.getNext() != null) {
+       		if(current.getKey() == key) {
+       			current.setValue(val);
+       			return;
+       		}
+       		current = current.getNext();
+       		
+   		}	
+    	
+    	current.setNext(new Node(key, val));
     }  
 
     /**
@@ -56,13 +82,7 @@ public class HomemadeLLMap implements HomemadeMap {
      * @return The value associated with this key, null if none exists
      */
     public String get(String key) {
-    	if(head == null) {
-    		return null;
-    	}
-    	if(head.getKey() == key) {
-    		return head.getValue();
-    	}
-    	return head.get(key);
+    	return null;
     	
     }
 
