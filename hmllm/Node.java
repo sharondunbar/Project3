@@ -64,10 +64,10 @@ public class Node {
 	 */
 	public boolean containsKey(String key) {
 		//Checks to see if this is the correct key
-		if(this.key == key)
+		if(this.key.equals(key))
 			return true;
 		
-		//Checks to see if there is another node after this
+		//Checks to see if there is another node after this and passes call on if there is
 		if(next != null) {
 			return next.containsKey(key);
 		}
@@ -81,12 +81,14 @@ public class Node {
 	 */
 	public void put(String key, String val) {
 		//Checks to see if this is the correct key
-		if(this.key == key) {
+		if(this.key.equals(key)) {
 			this.value = val;
 		}
+		//Passes on recursive call
 		else if(next != null) {
 			next.put(key, val);
 		}
+		//Adds new node if the key isn't found by the end
 		else {
 			next = new Node(key, val);
 		}
@@ -99,9 +101,10 @@ public class Node {
 	 */
 	public String get(String key) {
 		//Checks to see if this is the correct key
-		if(this.key == key) {
+		if(this.key.equals(key)) {
 			return this.value;
 		}
+		//Checks to see if there is another node and passes call if there is
 		if(next != null) {
 			return next.get(key);
 		}
@@ -114,7 +117,8 @@ public class Node {
 	 * @param key The key it is looking for
 	 */
 	public void remove(String key) {
-		if(next.getKey() == key) {
+		//Checks to see if the next node has the correct key, snips if it does
+		if(next.getKey().equals(key)) {
 			next = next.getNext();
 			return;
 		}

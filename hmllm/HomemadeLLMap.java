@@ -28,7 +28,7 @@ public class HomemadeLLMap implements HomemadeMap {
      */
     public boolean containsKey(String key) {
     	
-    	//Checks to make sure that the list isn't null, then
+    	//Checks to make sure that the list isn't null
     	if(head == null)
     		return false;
     	
@@ -42,6 +42,7 @@ public class HomemadeLLMap implements HomemadeMap {
      * @param val The value to which this key is associated
      */
     public void put(String key, String val) {
+    	//Checks to make sure that the list isn't null
     	if(head == null) {
     		head = new Node(key, val);
     	} 
@@ -56,10 +57,12 @@ public class HomemadeLLMap implements HomemadeMap {
      * @return The value associated with this key, null if none exists
      */
     public String get(String key) {
+    	//Checks to make sure that the list isn't null
     	if(head == null) {
     		return null;
     	}
-    	if(head.getKey() == key) {
+    	//Checks if head has correct value
+    	if(head.getKey().equals(key)) {
     		return head.getValue();
     	}
     	return head.get(key);
@@ -73,15 +76,16 @@ public class HomemadeLLMap implements HomemadeMap {
     	return new MapIterator(head);
     }
 
-    
     /**
      * Remove the association for this key.
      * @param key The key to remove
      */   
     public void remove(String key) {
+    	//Checks to see if the list is empty or if the key doesn't exist
     	if(head == null || ! head.containsKey(key))
     		return;
     	
+    	//Checks to see if head is the node to remove
     	if(head.getKey() == key) {
     		head = head.getNext();
     		return;
@@ -89,7 +93,5 @@ public class HomemadeLLMap implements HomemadeMap {
     	
     	head.remove(key);
     }
-
-
 	
 }
